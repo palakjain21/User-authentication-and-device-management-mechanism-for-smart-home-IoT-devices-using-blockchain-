@@ -1,0 +1,76 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #557c83;
+
+  color: white;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: #1c2733 0px 0px 10px;
+}
+.sidebarHeader {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+}
+.menu {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+.line{
+  margin-top: 2rem;
+  height: 0.1px;
+  background-color: #d6e9e9;
+  width: 100%;
+  /* box-shadow: #1c2733 0px 0px 5px; */
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: white;
+  margin-top: 3rem;
+}
+.optionBlock {
+  display: flex;
+  width: 100%;
+}
+.optionBlock:hover {
+  background-color: #d6e9e9;
+  width: 95%;
+  border-radius: 20px;
+  color: black !important;
+}
+
+.optionName {
+  padding-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none !important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.optionName:hover {
+  color: black !important;
+}
+
+/* @media only screen and (max-width: 800px) {
+  .left {
+    display: none;
+  }
+} */
+.css-hyum1k-MuiToolbar-root {
+  min-height: 0px !important;
+}

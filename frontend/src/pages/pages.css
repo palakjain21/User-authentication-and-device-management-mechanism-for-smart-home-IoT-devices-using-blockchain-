@@ -1,0 +1,156 @@
+.App {
+    background-color: #a2d5a2;
+    width: 100vw;
+    /* height: 100vh; */
+  }
+  .page {
+    width: 100%;
+    display: flex;
+    background-color: #557c83;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+  .left {
+    width: 20%;
+    height: 100%;
+    background-color: #b5d43b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #1c2733 !important;
+  }
+  .right {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    padding: 3rem;
+   
+   
+  }
+  .logo {
+    display: flex;
+    width: 100%;
+    height: 4rem;
+    color: black;
+    background-color: #d6e9e9;
+    align-items: center;
+    justify-content: center;
+  }
+  .hamBurger {
+    position: absolute;
+    top: 1.3rem;
+    left: 2rem;
+    right: 0;
+  }
+  .lowerPart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 94%;
+    height: 100%;
+    background-color: #d6e9e9;
+    color: black;
+    margin-top: 2rem;
+    padding: 2rem;
+  }
+  .addForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: #222e2e;
+    color: black;
+    margin-top: 2rem;
+    padding: 2rem;
+  }
+  /* .formBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+     height: 100%; 
+     background-color: #222e2e; 
+    color: black;
+    margin-top: 2rem;
+    padding: 2rem;
+  } */
+  .formbg {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a393c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .form {
+    background-color: #9eb998;
+    padding: 2rem;
+  }
+  .title {
+    font-family: Impact;
+    font-size: 3rem;
+    color: #ededdd;
+  }
+  .subtitle {
+    font-size: 2rem;
+    color: rgb(29, 29, 29);
+  }
+  .label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .input {
+    width: 20rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    padding: 3px 8px 3px 8px;
+    border: none;
+    box-shadow: none;
+    background-color: #ededdd;
+  }
+  .input:focus,
+  .input:active {
+    border: none;
+    outline: none;
+  }
+  .wrapper {
+    position: relative;
+    display: flex;
+    margin-bottom: 14px;
+  }
+  i {
+    position: absolute;
+    top: 30%;
+    right: 8%;
+    color: rgb(80, 79, 78);
+  }
+  i:hover {
+    color: black;
+    cursor: pointer;
+  }
+  .forgot {
+    margin-top: 1rem;
+  }
+  .button {
+    width: 21rem;
+    height: 2.5rem;
+    margin-top: 1rem;
+    color: black;
+    background-color: #557c83;
+    border: none;
+    box-shadow: none;
+  }

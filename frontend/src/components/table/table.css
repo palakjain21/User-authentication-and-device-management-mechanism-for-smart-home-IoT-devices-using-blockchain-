@@ -1,0 +1,18 @@
+.tableData {
+    display: flex;
+    width: 100%;
+    color: white !important;
+    background-color: #2b3642 !important;
+    /* height: 450px !important; */
+  }
+  .tableCell {
+    /* color: white !important; */
+    font-size: larger !important;
+  }
+  .tableBody {
+    height: 400px !important;
+  }
+  .tableContainer {
+    background-color: #2b3642 !important;
+    color: white !important;
+  }
