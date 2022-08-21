@@ -28,8 +28,8 @@ export default function Sidebar() {
           </NavLink>
         </div>
         <div className="optionBlock">
-          <NavLink to="/addUsers" className="optionName">
-            Register Users
+          <NavLink to="/addAdmins" className="optionName">
+            Register Admin
           </NavLink>
         </div>
         <div className="optionBlock">

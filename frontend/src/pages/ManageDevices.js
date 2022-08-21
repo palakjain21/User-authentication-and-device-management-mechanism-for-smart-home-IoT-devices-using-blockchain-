@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
-import TableComponent from "../components/table/Table";
+import TableComponent from "../components/table/DeviceTable";
 import "./pages.css";
 
 function ManageDevices() {
