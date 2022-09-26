@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import "./table.css";
 
-const TableComponent = ({}) => {
+const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
@@ -26,21 +26,46 @@ const TableComponent = ({}) => {
   };
 
   const columns = [
-    { id: "Admin Name", label: "Admin Name", minWidth: 270, align: "center" },
+    { id: "Admin Name", label: "Admin Name", minWidth: 300, align: "center" },
     {
       id: "Admin Address",
       label: "Admin Address",
-      minWidth: 270,
+      minWidth: 300,
       align: "center",
     },
-    // { id: "fogId", label: "Device Fog Map ID", minWidth: 100, align: "center" },
-    // {
-    //   id: "delete",
-    //   label: "Delete Device",
-    //   minWidth: 170,
-    //   align: "center",
-    // },
+    {
+      id: "Delete Admin",
+      label: "Delete Admin",
+      minWidth: 300,
+      align: "center",
+    },
   ];
+
+  function createData(AdminName, AdminAddress, DeleteAdmin) {
+    return { AdminName, AdminAddress, DeleteAdmin };
+  }
+
+  const row = [
+    createData(
+      "Admin 2",
+      "0xe16c1623c1aa7d919cd2241db3cd9e79w5df3t9",
+      "Delete"
+    ),
+  ];
+
+  const deleteAdmin = () => {
+    // event.preventDefault();
+    console.log("Device deleted successfully !!!");
+    alert("Admin deleted successfully !!!");
+  };
+  // { id: "fogId", label: "Device Fog Map ID", minWidth: 100, align: "center" },
+  // {
+  //   id: "delete",
+  //   label: "Delete Device",
+  //   minWidth: 170,
+  //   align: "center",
+  // },
+
   //    const columns = [
   //   { id: "userName", label: "User Name", minWidth: 170, align: "center" },
   //   {
@@ -80,30 +105,44 @@ const TableComponent = ({}) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {lastweekorderData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, i) => ( */}
-                <TableRow
-                  //   key={i}
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  sx={{ height: "max-content" }}
-                >
-                  {/* <TableCell component="th" scope="row" className="white">
-                        {row.time_log.split("G")[0]}
+                {row.map((row) => (
+                  <TableRow key={row.AdminAddress}>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      align="center"
+                      style={{ minWidth: row.minWidth }}
+                    >
+                      {row.AdminName}
+                    </TableCell>
+                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
+                      {row.AdminAddress}
+                    </TableCell>
+                    {String(account) ===
+                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button
+                          className="delActiveButton"
+                          onClick={deleteAdmin}
+                        >
+                          Delete
+                        </button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.food}
+                    ) : (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button className="delButton" >
+                          Delete
+                        </button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.unit}
-                      </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.amount_g.toFixed(2)}
-                      </TableCell> */}
-                </TableRow>
-                {/* ))} */}
+                    )}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

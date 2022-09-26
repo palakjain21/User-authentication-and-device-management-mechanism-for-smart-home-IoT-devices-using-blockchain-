@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import "./table.css";
 
-const TableComponent = ({}) => {
+const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
@@ -35,11 +35,24 @@ const TableComponent = ({}) => {
     },
     { id: "fogId", label: "Device Fog Map ID", minWidth: 100, align: "center" },
     {
-      id: "delete",
+      id: "deleteDevice",
       label: "Delete Device",
       minWidth: 170,
       align: "center",
     },
+  ];
+
+  function createData(deviceName, deviceAddress, fogId, deleteDevice) {
+    return { deviceName, deviceAddress, fogId, deleteDevice };
+  }
+
+  const row = [
+    createData(
+      "Security Camera 1",
+      "0xe16c1623c1aa7d919cd2241db3cd9e79c1ie7a2w9",
+      "0xe16c1623c1aa7d919cd2241d8bwd45fs3f66ha3K7",
+      "Delete"
+    ),
   ];
   //    const columns = [
   //   { id: "userName", label: "User Name", minWidth: 170, align: "center" },
@@ -58,6 +71,11 @@ const TableComponent = ({}) => {
   //     align: "center",
   //   },
   // ]
+  const deleteDevice = () => {
+    // event.preventDefault();
+    console.log("Device deleted successfully !!!");
+    alert("Device deleted successfully !!!");
+  };
 
   return (
     <div>
@@ -80,30 +98,53 @@ const TableComponent = ({}) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {lastweekorderData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, i) => ( */}
-                <TableRow
-                  //   key={i}
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  sx={{ height: "max-content" }}
-                >
-                  {/* <TableCell component="th" scope="row" className="white">
-                        {row.time_log.split("G")[0]}
+                {row.map((row) => (
+                  <TableRow key={row.deviceAddress}>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      align="center"
+                      style={{ minWidth: row.minWidth }}
+                    >
+                      {row.deviceName}
+                    </TableCell>
+                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
+                      {row.deviceAddress}
+                    </TableCell>
+                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
+                      {row.fogId}
+                    </TableCell>
+                    {/* <TableCell
+                      align="center"
+                      style={{ minWidth: row.minWidth }}
+                    > */}
+                    {/* <button className="delButton" onClick={deleteDevice}>
+                        Delete
+                      </button> */}
+                    {String(account) ===
+                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button
+                          className="delActiveButton"
+                          onClick={deleteDevice}
+                        >
+                          Delete
+                        </button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.food}
+                    ) : (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button className="delButton">Delete</button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.unit}
-                      </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.amount_g.toFixed(2)}
-                      </TableCell> */}
-                </TableRow>
-                {/* ))} */}
+                    )}
+                    {/* </TableCell> */}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

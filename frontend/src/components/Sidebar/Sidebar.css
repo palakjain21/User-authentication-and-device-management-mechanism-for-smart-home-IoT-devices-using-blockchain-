@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  width: 20%;
+  width: 22.6%;
   height: 100%;
   background-color: #557c83;
 
@@ -18,6 +18,7 @@
 .sidebarHeader {
   width: 8rem;
   display: flex;
+  /* flex-direction: column; */
   align-items: center;
   width: 80%;
   justify-content: space-between;
@@ -65,7 +66,14 @@
 .optionName:hover {
   color: black !important;
 }
-
+.accType{
+  display: flex;
+  margin-top: 10rem;
+}
+.accAdd{
+  display: flex;
+  margin-top: 0rem;
+}
 /* @media only screen and (max-width: 800px) {
   .left {
     display: none;

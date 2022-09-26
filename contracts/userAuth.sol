@@ -30,6 +30,7 @@ contract AuthenticationContract {
     // mapping for devices at a fog node
     mapping(address => address[]) public fog_devices;
     mapping(address => bytes32) public device_names;
+
     modifier onlyAdmin() {
         // for user check at modifications
         bool admin = false;

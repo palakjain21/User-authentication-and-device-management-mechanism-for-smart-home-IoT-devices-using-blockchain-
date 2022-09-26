@@ -3,6 +3,7 @@
     width: 100%;
     color: white !important;
     background-color: #2b3642 !important;
+    /* margin-left: 2rem; */
     /* height: 450px !important; */
   }
   .tableCell {
@@ -15,4 +16,20 @@
   .tableContainer {
     background-color: #2b3642 !important;
     color: white !important;
+  }
+  
+  .delButton, .delActiveButton{
+    background-color: grey;
+    color: white;
+    font-size: larger;
+    height: 2rem;
+    width: 5rem;
+    border-radius: 5px;
+    outline: none;
+  }
+  .delActiveButton{
+    background-color: red;
+  }
+  .css-1q1u3t4-MuiTableRow-root {
+    background-color: white !important;
   }

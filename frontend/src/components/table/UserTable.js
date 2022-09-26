@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import "./table.css";
 
-const TableComponent = ({}) => {
+const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
@@ -26,11 +26,11 @@ const TableComponent = ({}) => {
   };
 
   const columns = [
-    { id: "user Name", label: "User Name", minWidth: 170, align: "center" },
+    { id: "user Name", label: "User Name", minWidth: 100, align: "center" },
     {
       id: "User Address",
       label: "User Address",
-      minWidth: 170,
+      minWidth: 100,
       align: "center",
     },
 
@@ -40,14 +40,20 @@ const TableComponent = ({}) => {
     //   minWidth: 170,
     //   align: "center",
     // },
-    { id: "deviceName", label: "Device Name", minWidth: 170, align: "center" },
+    { id: "deviceName", label: "Device Name", minWidth: 100, align: "center" },
     {
       id: "deviceAddress",
       label: "Device Address",
-      minWidth: 170,
+      minWidth: 100,
       align: "center",
     },
     { id: "fogId", label: "Device Fog Map ID", minWidth: 100, align: "center" },
+    {
+      id: "deleteUserDeviceMapping",
+      label: "DeleteUserDeviceMapping",
+      minWidth: 100,
+      align: "center",
+    },
   ];
   //    const columns = [
   //   { id: "userName", label: "User Name", minWidth: 170, align: "center" },
@@ -66,12 +72,47 @@ const TableComponent = ({}) => {
   //     align: "center",
   //   },
   // ]
+  function createData(
+    userName,
+    userAddress,
+    deviceName,
+    deviceAddress,
+    fogId,
+    deleteUserDeviceMapping
+  ) {
+    return {
+      userName,
+      userAddress,
+      deviceName,
+      deviceAddress,
+      fogId,
+      deleteUserDeviceMapping,
+    };
+  }
+
+  const row = [
+    createData(
+      "User 1",
+      "`0xe16c1623c1aa7d919cd2241db3cd5de6yt8vs9u9`",
+      "Security Camera 1",
+      "0xe16c1623c1aa7d919cd2241db3cd9e79c1ie7a2w9",
+      "0xe16c1623c1aa7d919cd2241d8bwd45fs3f66ha3K7",
+      "Delete"
+    ),
+  ];
+
+  const deleteUserDeviceMapping = () => {
+    alert("Deleted User Device Mapping Successfully!!!");
+  };
 
   return (
     <div>
       <div className="tableData">
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
-          <TableContainer sx={{ maxHeight: 400 }} className="tableContainer">
+          <TableContainer
+            sx={{ maxHeight: 400, maxWidth: 1100 }}
+            className="tableContainer"
+          >
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
@@ -88,30 +129,58 @@ const TableComponent = ({}) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {/* {lastweekorderData
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, i) => ( */}
-                <TableRow
-                  //   key={i}
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  sx={{ height: "max-content" }}
-                >
-                  {/* <TableCell component="th" scope="row" className="white">
-                        {row.time_log.split("G")[0]}
+                {row.map((row) => (
+                  <TableRow key={row.userAddress}>
+                    <TableCell>{row.userName}</TableCell>
+                    <TableCell>{row.userAddress}</TableCell>
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      align="center"
+                      style={{ minWidth: row.minWidth }}
+                    >
+                      {row.deviceName}
+                    </TableCell>
+                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
+                      {row.deviceAddress}
+                    </TableCell>
+                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
+                      {row.fogId}
+                    </TableCell>
+                    {/* <TableCell
+                      align="center"
+                      style={{ minWidth: row.minWidth }}
+                    > */}
+                    {/* <button
+                        className="delButton"
+                        onClick={deleteUserDeviceMapping}
+                      >
+                        Delete
+                      </button> */}
+                    {String(account) ===
+                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button
+                          className="delActiveButton"
+                          onClick={deleteUserDeviceMapping}
+                        >
+                          Delete
+                        </button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.food}
+                    ) : (
+                      <TableCell
+                        align="center"
+                        style={{ minWidth: row.minWidth }}
+                      >
+                        <button className="delButton">Delete</button>
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.unit}
-                      </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.amount_g.toFixed(2)}
-                      </TableCell> */}
-                </TableRow>
-                {/* ))} */}
+                    )}
+                    {/* </TableCell> */}
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

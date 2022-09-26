@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar({ account }) {
+  console.log(account, "acc no");
   return (
     <div className="sidebar">
       <div className="sidebarHeader">
@@ -18,6 +19,11 @@ export default function Sidebar() {
           </NavLink>
         </div>
         <div className="optionBlock">
+          <NavLink to="/addAdmins" className="optionName">
+            Register Admin
+          </NavLink>
+        </div>
+        <div className="optionBlock">
           <NavLink to="/addDevices" className="optionName">
             Register Device
           </NavLink>
@@ -28,8 +34,8 @@ export default function Sidebar() {
           </NavLink>
         </div>
         <div className="optionBlock">
-          <NavLink to="/addAdmins" className="optionName">
-            Register Admin
+          <NavLink to="/registerUsers" className="optionName">
+            Register Users
           </NavLink>
         </div>
         <div className="optionBlock">
@@ -38,6 +44,8 @@ export default function Sidebar() {
           </NavLink>
         </div>
       </div>
+      {/* <h4 className="accType">Account Type: Non-Admin</h4>
+      <h5 className="accAdd">{account}</h5> */}
     </div>
   );
 }

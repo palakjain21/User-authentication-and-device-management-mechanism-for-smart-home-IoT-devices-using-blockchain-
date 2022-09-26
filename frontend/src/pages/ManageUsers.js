@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import TableComponent from "../components/table/UserTable";
 import "./pages.css";
 
-function ManageUsers() {
+function ManageUsers({account}) {
   return (
     <div className="App">
       <div className="page">
@@ -15,7 +15,7 @@ function ManageUsers() {
             <h1>IOT device management</h1>
           </div>
           <div className="lowerPart">
-            <TableComponent />
+            <TableComponent account={account}/>
           </div>
         </div>
       </div>

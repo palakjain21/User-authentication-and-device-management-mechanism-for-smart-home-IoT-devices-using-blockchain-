@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./pages.css";
 
-function AddAdmin() {
+function AddAdmin({ account }) {
   const [adminName, setAdminName] = React.useState("");
   const [adminAddress, setAdminAddress] = React.useState("");
 
@@ -16,6 +16,7 @@ function AddAdmin() {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(adminName, adminAddress);
+    alert("Admin added successfully!!!");
   };
 
   return (
@@ -51,7 +52,7 @@ function AddAdmin() {
                     type="text"
                     name="admin address"
                     value={adminAddress}
-                    placeholder="admin address"
+                    placeholder="Admin Address"
                     onChange={updateAdminAddress}
                     required
                   />
@@ -59,9 +60,20 @@ function AddAdmin() {
               </label>
 
               <div>
-                <button className="button" type="submit" onClick={onSubmit}>
-                  Add Admin
-                </button>
+                {String(account) ===
+                "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
+                  <button className="button" type="submit" onClick={onSubmit}>
+                    Add Admin
+                  </button>
+                ) : (
+                  <button
+                    className="deactiveButton"
+                    // type="submit"
+                    // onClick={onSubmit}
+                  >
+                    Add Admin
+                  </button>
+                )}
               </div>
             </form>
           </div>
