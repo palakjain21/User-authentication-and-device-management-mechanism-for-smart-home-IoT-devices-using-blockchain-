@@ -10,6 +10,7 @@ import {
   TablePagination,
 } from "@mui/material";
 import "./table.css";
+import { deleteUser } from "../../Web3Client";
 
 const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
@@ -101,10 +102,16 @@ const TableComponent = ({ account }) => {
     ),
   ];
 
-  const deleteUserDeviceMapping = () => {
-    alert("Deleted User Device Mapping Successfully!!!");
-  };
+  // const deleteUserDeviceMapping = () => {
+  //   alert("Deleted User Device Mapping Successfully!!!");
+  // };
 
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   // console.log("Device deleted successfully !!!");
+  //   // alert("Admin deleted successfully !!!");
+  //   deleteUser(userAddress);
+  // };
   return (
     <div>
       <div className="tableData">
@@ -129,6 +136,18 @@ const TableComponent = ({ account }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
+                {/* {data.map((row, i) => (
+                  <TableRow component="th" scope="row" key={i}>
+                  <TableCell className="tableCell" align="center">{row.userName}</TableCell>
+                  <TableCell className="tableCell" align="center">{row.userAddress}</TableCell>
+                    <TableCell className="tableCell" align="center">{row.name}</TableCell>
+                    <TableCell className="tableCell" align="center">{row.id}</TableCell>
+                    <TableCell className="tableCell" align="center">{row.fogId}</TableCell>
+                    <TableCell className="tableCell" align="center"><button className="delActiveButton" onClick={handleDelete}>Delete</button></TableCell>
+                  </TableRow>
+                ))} */}
+              </TableBody>
+              {/* <TableBody>
                 {row.map((row) => (
                   <TableRow key={row.userAddress}>
                     <TableCell>{row.userName}</TableCell>
@@ -151,37 +170,37 @@ const TableComponent = ({ account }) => {
                       align="center"
                       style={{ minWidth: row.minWidth }}
                     > */}
-                    {/* <button
+              {/* <button
                         className="delButton"
                         onClick={deleteUserDeviceMapping}
                       >
                         Delete
                       </button> */}
-                    {String(account) ===
-                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
-                      >
-                        <button
-                          className="delActiveButton"
-                          onClick={deleteUserDeviceMapping}
+              {/* {String(account) ===
+                      "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
+                        <TableCell
+                          align="center"
+                          style={{ minWidth: row.minWidth }}
                         >
-                          Delete
-                        </button>
-                      </TableCell>
-                    ) : (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
-                      >
-                        <button className="delButton">Delete</button>
-                      </TableCell>
-                    )}
-                    {/* </TableCell> */}
-                  </TableRow>
+                          <button
+                            className="delActiveButton"
+                            onClick={deleteUserDeviceMapping}
+                          >
+                            Delete
+                          </button>
+                        </TableCell>
+                      ) : (
+                        <TableCell
+                          align="center"
+                          style={{ minWidth: row.minWidth }}
+                        >
+                          <button className="delButton">Delete</button>
+                        </TableCell>
+                      )} */}
+              {/* </TableCell> */}
+              {/* </TableRow>
                 ))}
-              </TableBody>
+              </TableBody> */}
             </Table>
           </TableContainer>
           <TablePagination

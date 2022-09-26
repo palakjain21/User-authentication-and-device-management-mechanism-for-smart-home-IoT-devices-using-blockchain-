@@ -1,8 +1,9 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./pages.css";
+import { addAdmin } from "../Web3Client";
 
-function AddAdmin({ account }) {
+function AddAdmin() {
   const [adminName, setAdminName] = React.useState("");
   const [adminAddress, setAdminAddress] = React.useState("");
 
@@ -15,8 +16,7 @@ function AddAdmin({ account }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(adminName, adminAddress);
-    alert("Admin added successfully!!!");
+    addAdmin(adminAddress, adminName);
   };
 
   return (
@@ -60,7 +60,7 @@ function AddAdmin({ account }) {
               </label>
 
               <div>
-                {String(account) ===
+                {/* {String(account) ===
                 "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
                   <button className="button" type="submit" onClick={onSubmit}>
                     Add Admin
@@ -73,7 +73,10 @@ function AddAdmin({ account }) {
                   >
                     Add Admin
                   </button>
-                )}
+                )} */}
+                <button className="button" type="submit" onClick={onSubmit}>
+                  Add Admin
+                </button>
               </div>
             </form>
           </div>

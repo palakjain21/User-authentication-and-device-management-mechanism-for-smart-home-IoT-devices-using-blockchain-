@@ -38,11 +38,11 @@ export default function Sidebar({ account }) {
             Register Users
           </NavLink>
         </div>
-        <div className="optionBlock">
+        {/* <div className="optionBlock">
           <NavLink to="/manageUsers" className="optionName">
             Manage Users
           </NavLink>
-        </div>
+        </div> */}
       </div>
       {/* <h4 className="accType">Account Type: Non-Admin</h4>
       <h5 className="accAdd">{account}</h5> */}

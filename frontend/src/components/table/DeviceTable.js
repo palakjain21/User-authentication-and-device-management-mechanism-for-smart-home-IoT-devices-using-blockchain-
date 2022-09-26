@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   TableContainer,
   Table,
@@ -10,11 +10,23 @@ import {
   TablePagination,
 } from "@mui/material";
 import "./table.css";
+import { deleteDev, listDevices } from "../../Web3Client";
 
 const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    const list = async () => {
+      const dat = await listDevices();
+      console.log(dat);
+      setData(dat);
+    };
+    list();
+    console.log(data, "device data");
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -71,12 +83,18 @@ const TableComponent = ({ account }) => {
   //     align: "center",
   //   },
   // ]
-  const deleteDevice = () => {
-    // event.preventDefault();
-    console.log("Device deleted successfully !!!");
-    alert("Device deleted successfully !!!");
-  };
+  // const deleteDevice = () => {
+  //   // event.preventDefault();
+  //   console.log("Device deleted successfully !!!");
+  //   alert("Device deleted successfully !!!");
+  // };
 
+  // const handleDelete = (index) => {
+  //   event.preventDefault();
+  //   // console.log("Device deleted successfully !!!");
+  //   // alert("Admin deleted successfully !!!");
+  //   deleteDev(fogAddress);
+  // };
   return (
     <div>
       <div className="tableData">
@@ -98,53 +116,14 @@ const TableComponent = ({ account }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {row.map((row) => (
-                  <TableRow key={row.deviceAddress}>
-                    <TableCell
-                      component="th"
-                      scope="row"
-                      align="center"
-                      style={{ minWidth: row.minWidth }}
-                    >
-                      {row.deviceName}
-                    </TableCell>
-                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
-                      {row.deviceAddress}
-                    </TableCell>
-                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
-                      {row.fogId}
-                    </TableCell>
-                    {/* <TableCell
-                      align="center"
-                      style={{ minWidth: row.minWidth }}
-                    > */}
-                    {/* <button className="delButton" onClick={deleteDevice}>
-                        Delete
-                      </button> */}
-                    {String(account) ===
-                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
-                      >
-                        <button
-                          className="delActiveButton"
-                          onClick={deleteDevice}
-                        >
-                          Delete
-                        </button>
-                      </TableCell>
-                    ) : (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
-                      >
-                        <button className="delButton">Delete</button>
-                      </TableCell>
-                    )}
-                    {/* </TableCell> */}
+                {/* {data.map((row, i) => (
+                  <TableRow component="th" scope="row" key={i}>
+                    <TableCell className="tableCell" align="center">{row.name}</TableCell>
+                    <TableCell className="tableCell" align="center">{row.id}</TableCell>
+                    <TableCell className="tableCell" align="center">{row.fogId}</TableCell>
+                    <TableCell className="tableCell" align="center"><button className="delActiveButton" onClick={handleDelete}>Delete</button></TableCell>
                   </TableRow>
-                ))}
+                ))} */}
               </TableBody>
             </Table>
           </TableContainer>

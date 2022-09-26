@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   TableContainer,
   Table,
@@ -10,12 +10,21 @@ import {
   TablePagination,
 } from "@mui/material";
 import "./table.css";
+import { listAdmin, deleteAdmin } from "../../Web3Client";
 
 const TableComponent = ({ account }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
-
+  const [data, setData] = React.useState([]);
+  useEffect(() => {
+    const list = async () => {
+      const dat = await listAdmin();
+      console.log(dat);
+      setData(dat);
+    };
+    list();
+  }, []);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -53,11 +62,13 @@ const TableComponent = ({ account }) => {
     ),
   ];
 
-  const deleteAdmin = () => {
-    // event.preventDefault();
-    console.log("Device deleted successfully !!!");
-    alert("Admin deleted successfully !!!");
-  };
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   // console.log("Device deleted successfully !!!");
+  //   // alert("Admin deleted successfully !!!");
+  //   deleteAdmin(AdminAddress);
+  // };
+
   // { id: "fogId", label: "Device Fog Map ID", minWidth: 100, align: "center" },
   // {
   //   id: "delete",
@@ -105,44 +116,58 @@ const TableComponent = ({ account }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {row.map((row) => (
-                  <TableRow key={row.AdminAddress}>
+                {/* {lastweekorderData
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, i) => ( */}
+                {data.map((row, i) => (
+                  <TableRow scope="row" key={i}>
                     <TableCell
-                      component="th"
-                      scope="row"
+                      className="tableCell"
+                      // style={{ minWidth: "150px" }}
                       align="center"
-                      style={{ minWidth: row.minWidth }}
+                      scope="row"
                     >
-                      {row.AdminName}
+                      {row.name}
                     </TableCell>
-                    <TableCell align="right" style={{ minWidth: row.minWidth }}>
-                      {row.AdminAddress}
+                    <TableCell
+                      className="tableCell"
+                      align="center"
+                      // style={{ minWidth: "200px" }}
+                      scope="row"
+                    >
+                      {row.id}
                     </TableCell>
-                    {String(account) ===
-                    "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
+                    <TableCell className="tableCell" align="center">
+                      <button
+                        className="delActiveButton"
+                        // onClick={handleDelete}
                       >
-                        <button
-                          className="delActiveButton"
-                          onClick={deleteAdmin}
-                        >
-                          Delete
-                        </button>
-                      </TableCell>
-                    ) : (
-                      <TableCell
-                        align="center"
-                        style={{ minWidth: row.minWidth }}
-                      >
-                        <button className="delButton" >
-                          Delete
-                        </button>
-                      </TableCell>
-                    )}
+                        Delete
+                      </button>
+                    </TableCell>
                   </TableRow>
                 ))}
+                {/* <TableRow
+                  //   key={i}
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  sx={{ height: "max-content" }}
+                >
+                  <TableCell component="th" scope="row" >
+                        row.time_log.split("G")[0]
+                      </TableCell>
+                      <TableCell align="center" >
+                        row.food
+                      </TableCell>
+                      <TableCell align="center" >
+                        row.unit
+                      </TableCell>
+                      <TableCell align="center">
+                        row.amount_g.toFixed(2)
+                      </TableCell>
+                </TableRow> */}
+                {/* ))} */}
               </TableBody>
             </Table>
           </TableContainer>

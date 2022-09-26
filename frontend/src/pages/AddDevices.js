@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import TableComponent from "../components/table/DeviceTable";
 import "./pages.css";
+import { addDevices } from "../Web3Client";
 
 function AddDevices({ account }) {
   const [deviceName, setDeviceName] = React.useState("");
@@ -21,8 +22,9 @@ function AddDevices({ account }) {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(deviceName, deviceAddress, fogAddress);
-    alert("Device added successfully!!!");
+    // console.log(deviceName, deviceAddress, fogAddress);
+    // alert("Device added successfully!!!");
+    addDevices(deviceAddress, fogAddress);
   };
 
   return (
@@ -83,20 +85,10 @@ function AddDevices({ account }) {
                 {/* <button className="button" type="submit" onClick={onSubmit}>
                   Add Device
                 </button> */}
-                {String(account) ===
-                "0xa86099b3ca1c1f25332c56194113fe591ccf2f3c" ? (
-                  <button className="button" type="submit" onClick={onSubmit}>
-                    Add Device
-                  </button>
-                ) : (
-                  <button
-                    className="deactiveButton"
-                    // type="submit"
-                    // onClick={onSubmit}
-                  >
-                    Add Device
-                  </button>
-                )}
+
+                <button className="button" type="submit" onClick={onSubmit}>
+                  Add Device
+                </button>
               </div>
             </form>
           </div>

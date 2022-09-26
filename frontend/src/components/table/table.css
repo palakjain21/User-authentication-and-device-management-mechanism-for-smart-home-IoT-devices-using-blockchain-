@@ -21,7 +21,7 @@
   .delButton, .delActiveButton{
     background-color: grey;
     color: white;
-    font-size: larger;
+    font-size: large;
     height: 2rem;
     width: 5rem;
     border-radius: 5px;
@@ -32,4 +32,8 @@
   }
   .css-1q1u3t4-MuiTableRow-root {
     background-color: white !important;
+  }
+
+  .css-dwuj3p-MuiTableCell-root {
+    min-width: 200px !important;
   }
