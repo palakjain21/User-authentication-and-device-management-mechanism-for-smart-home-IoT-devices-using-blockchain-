@@ -8,12 +8,16 @@ import ManageDevices from "./pages/ManageDevices";
 // import getWeb3 from "./web3";
 import Web3 from "web3";
 import AddAdmin from "./pages/AddAdmin";
+// import { addDevice, init } from "./Web3Client";
 function App() {
   const [web3, setWeb3] = React.useState(null);
   useEffect(() => {
-    async function load() {
-      const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
-    }
+    // const test= async()=>{
+    //   const data=await addDevice('0x5fbdb2315678afecb367f032d93f642f64180aa3','0x5fbdb2315678afecb367f032d93f642f64180aa3');
+    //   console.log(data,"TEST");
+    // }
+    // test();
+    // init()
   }, []);
   return (
     <BrowserRouter>

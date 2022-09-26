@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./pages.css";
-
+import { addAdmin } from "../Web3Client";
 function AddAdmin() {
   const [adminName, setAdminName] = React.useState("");
   const [adminAddress, setAdminAddress] = React.useState("");
@@ -15,7 +15,7 @@ function AddAdmin() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(adminName, adminAddress);
+    addAdmin(adminAddress,adminName);
   };
 
   return (

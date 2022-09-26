@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   TableContainer,
   Table,
@@ -10,12 +10,21 @@ import {
   TablePagination,
 } from "@mui/material";
 import "./table.css";
+import { listAdmin } from "../../Web3Client";
 
 const TableComponent = ({}) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [pageUrl, setPageUrl] = React.useState(false);
-
+  const [data, setData] = React.useState([]);
+  useEffect(() => {
+    const list=async()=>{
+      const dat=await listAdmin();
+      console.log(dat);
+      setData(dat);
+    }
+    list();
+  }, []);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -83,26 +92,32 @@ const TableComponent = ({}) => {
                 {/* {lastweekorderData
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row, i) => ( */}
-                <TableRow
+                {data.map((row, i) => (
+                  <TableRow component='th' scope='row' key={i}>
+                    <TableCell className='tableCell'>{row.name}</TableCell>
+                    <TableCell className='tableCell'>{row.id}</TableCell>
+                  </TableRow>
+                ))}
+                {/* <TableRow
                   //   key={i}
                   hover
                   role="checkbox"
                   tabIndex={-1}
                   sx={{ height: "max-content" }}
                 >
-                  {/* <TableCell component="th" scope="row" className="white">
-                        {row.time_log.split("G")[0]}
+                  <TableCell component="th" scope="row" >
+                        row.time_log.split("G")[0]
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.food}
+                      <TableCell align="center" >
+                        row.food
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.unit}
+                      <TableCell align="center" >
+                        row.unit
                       </TableCell>
-                      <TableCell align="center" className="white">
-                        {row.amount_g.toFixed(2)}
-                      </TableCell> */}
-                </TableRow>
+                      <TableCell align="center">
+                        row.amount_g.toFixed(2)
+                      </TableCell>
+                </TableRow> */}
                 {/* ))} */}
               </TableBody>
             </Table>
